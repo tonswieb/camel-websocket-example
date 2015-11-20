@@ -21,16 +21,16 @@ public class WebSocketRoute extends RouteBuilder {
 		
 		from(WEBSOCKET_URI)
 		.log("Received: ${body} from ${header[websocket.connectionKey]}")
-		.bean(activeClients,"put(${header[websocket.connectionKey]},Test)")
+//		.bean(activeClients,"put(${header[websocket.connectionKey]},'Test')")
 		.setBody(simple("${body} from ${header[websocket.connectionKey]}"))
 		.to(WEBSOCKET_URI);
 		
-		from("timer://client?fixedRate=true&period=6000")
-		.setBody(constant(activeClients.keySet()))
-		.split(body())
-			.setHeader("websocket.connectionKey",body())
-			.log("Test message to: ${body}")
-			.setBody(simple("Test message to: ${body}"))
-			.to(WEBSOCKET_URI);
+//		from("timer://client?fixedRate=true&period=6000")
+//		.setBody(constant(activeClients.keySet()))
+//		.split(body())
+//			.setHeader("websocket.connectionKey",body())
+//			.log("Test message to: ${body}")
+//			.setBody(simple("Test message to: ${body}"))
+//			.to(WEBSOCKET_URI);
 	}
 }

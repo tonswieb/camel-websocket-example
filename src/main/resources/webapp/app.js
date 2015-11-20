@@ -9,7 +9,7 @@ window.onload = function() {
 
 
   // Create a new WebSocket.
-  var socket = new WebSocket('ws://localhost:9092/camel-tweet');
+  var socket = new WebSocket('ws://localhost:9292/camel-tweet');
 
 
   // Handle any errors that occur.
